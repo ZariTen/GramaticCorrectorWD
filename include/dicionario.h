@@ -3,11 +3,20 @@
 #include <unordered_set>
 #include <string>
 #include <levenshtein.h>
+#include <fstream>
+#include <iostream>
+#include <cstdio>
 
 struct dicionario{
-    
-    void lerArquivo(std::string nome){
+    unordered_set<std::string> palavrasDicionario; 
 
+    //Adicionar as palavras ao dicionario
+    void lerArquivo(std::string nome){
+        std::string line;
+        std::ifstream input(nome);
+        while(std::getline(input,line)){
+            palavrasDicionario.insert(line); 
+        }
 
     }
 
