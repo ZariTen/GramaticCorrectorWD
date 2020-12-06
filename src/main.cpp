@@ -21,9 +21,8 @@ int main(int argc, char* argv[]){
         std::string temp;
 
         while(std::getline(file,temp,' ')){
-            //d.verificarExistencia(temp);
+            d.verificarExistencia(temp);
         }
-        d.verificarExistencia("caxito");
 
         return 0;
 }
