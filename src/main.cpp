@@ -21,6 +21,9 @@ int main(int argc, char* argv[]){
         std::string temp;
 
         while(std::getline(file,temp,' ')){
+            temp.erase(std::remove(temp.begin(),temp.end(),','),temp.end()); 
+            temp.erase(std::remove(temp.begin(),temp.end(),'.'),temp.end()); 
+            temp.erase(std::remove(temp.begin(),temp.end(),'\n'),temp.end()); 
             d.verificarExistencia(temp);
         }
 

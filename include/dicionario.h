@@ -23,16 +23,24 @@ struct dicionario{
 
     bool verificarExistencia(std::string palavra){
         if (palavrasDicionario.count(palavra)){
-            std::cout << "Palavra achada" << std::endl;
             return true;
         }
 
-        std::cout << "Palavra não achada" << std::endl;
+        std::cout << palavra << ":" << std::endl;
+        sugerirPalavras(palavra);
         return false;
     }
 
-    void sugerirPalavras(std::string palavra){
+    void sugerirPalavras(const std::string palavra){
+        std::string sugestoes[5];
+        
+        for(auto& it: palavrasDicionario){
+            int distWord = levenshtein<std::string>(palavra,std::string(it.first));    
 
+            if(distWord < 4){
+                std::cout << "    -" << it.first << std::endl;
+            }
+        }
 
     }
 
