@@ -1,6 +1,7 @@
 #ifndef DICT_HPP
 #define DICT_HPP
 #include <unordered_map>
+#include <map>
 #include <string>
 #include <levenshtein.h>
 #include <fstream>
@@ -9,6 +10,7 @@
 
 struct dicionario{
     std::unordered_map<std::string,std::string> palavrasDicionario; 
+
 
     //Adicionar as palavras ao dicionario
     void lerArquivo(std::string nome){
@@ -32,13 +34,21 @@ struct dicionario{
     }
 
     void sugerirPalavras(const std::string palavra){
-        std::string sugestoes[5];
-        
+        std::map<int,std::string> sugestoes;
+        int limite=0; 
         for(auto& it: palavrasDicionario){
             int distWord = levenshtein<std::string>(palavra,std::string(it.first));    
 
-            if(distWord < 4){
-                std::cout << "    -" << it.first << std::endl;
+            if(distWord < 6){
+                sugestoes.insert({distWord,it.first});
+            }
+            
+        }
+        limite=0; 
+        for(auto& it: sugestoes){
+            if (limite < 5){    
+                std::cout << "   -" << it.second << std::endl;
+                ++limite;
             }
         }
 
