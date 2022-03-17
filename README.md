@@ -1,5 +1,5 @@
 # How to use
-1. Make a directory build and use `cmake ..`
+1. Create an folder with `mkdir build`, enter the folder with `cd build` and then `cmake ..`
 2. Use `make`
 3. Use `./programa [Dictionary file] [Text file]`
 
